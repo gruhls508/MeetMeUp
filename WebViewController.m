@@ -1,0 +1,78 @@
+//
+//  WebViewController.m
+//  MeetMeUp
+//
+//  Created by Glen Ruhl on 8/4/14.
+//  Copyright (c) 2014 MM. All rights reserved.
+//
+
+#import "WebViewController.h"
+
+@interface WebViewController () <UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIButton *forwardButton;
+@property (weak, nonatomic) IBOutlet UIWebView *thatWebView;
+
+@end
+
+@implementation WebViewController
+
+
+- (IBAction)onBackButtonPressed:(UIButton *)sender {
+    
+    [self.thatWebView goBack];
+    
+    NSLog(@"back button pressed");
+}
+
+
+- (IBAction)onForwardButtonPressed:(UIButton *)sender {
+    
+    [self.thatWebView goForward];
+    NSLog(@"forward button pressed");
+}
+
+- (void) loadURLstring:(NSString *)urlString
+{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.thatWebView loadRequest:urlRequest];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.eventPageURLString = @"http://yahoo.com";
+    [self loadURLstring:self.eventPageURLString];
+    //  Default settings for the buttons are that they
+    //  are both disabled. Because duh. I mean, why would
+    //  you want the buttons to be "colored in" and active
+    //   if there is no need for them? And yes, the client
+    //  did ask for this.
+    
+    
+    self.backButton.enabled = NO;
+    self.forwardButton.enabled = NO;
+}
+
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    
+    //  These are the methods that enable the forward & backward
+    //  buttons in the event that the WebView has valid destinations for the app to go forward and backward to.
+
+
+    if ([self.thatWebView canGoBack]) {
+        self.backButton.enabled = YES;
+    }
+    else (self.backButton.enabled = NO);
+    if ([self.thatWebView canGoForward]) {
+        self.forwardButton.enabled = YES;
+    }
+    else (self.forwardButton.enabled = NO);
+}
+
+
+@end
