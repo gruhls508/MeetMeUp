@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+#import "ViewController.h"
+#import "WebViewController.h"
 
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *eventNameLabel;
@@ -52,6 +54,21 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    WebViewController *wvc = segue.destinationViewController;
+    
+    
+//    NSURL *url = [NSURL URLWithString:@"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=5f537f3357d2729651f11773e1e57"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
+//     ^(NSURLResponse *rsp, NSData *data, NSError *connectionError)
+     {
+         
+//         wvc.webEventArray = [[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]objectForKey:@"results"];
+//         wvc.webEventArray = self.detailEventArray;
+         
+         
+         wvc.webEventDictionary = self.detailEventDictionary;
+     }
     
 }
 
