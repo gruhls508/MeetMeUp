@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
 @property (weak, nonatomic) IBOutlet UIWebView *thatWebView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @end
 
@@ -39,12 +40,25 @@
     [self.thatWebView loadRequest:urlRequest];
 }
 
+
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.eventPageURLString = @"http://yahoo.com";
+    
+//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.hidesWhenStopped = YES;
+    [self.spinner startAnimating];
+    
+    
+    self.eventPageURLString = [NSString stringWithFormat:@"%@",[self.webEventDictionary objectForKey:@"event_url"]];
     [self loadURLstring:self.eventPageURLString];
+    
+    
     //  Default settings for the buttons are that they
     //  are both disabled. Because duh. I mean, why would
     //  you want the buttons to be "colored in" and active
@@ -57,8 +71,11 @@
 }
 
 
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
+    
+    [self.spinner stopAnimating];
     
     //  These are the methods that enable the forward & backward
     //  buttons in the event that the WebView has valid destinations for the app to go forward and backward to.

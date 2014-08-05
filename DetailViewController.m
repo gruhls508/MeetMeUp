@@ -66,8 +66,10 @@
 //         wvc.webEventArray = [[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]objectForKey:@"results"];
 //         wvc.webEventArray = self.detailEventArray;
          
-         
-         wvc.webEventDictionary = self.detailEventDictionary;
+
+    wvc.webEventDictionary = self.detailEventDictionary;
+     
+     
      }
     
 }
