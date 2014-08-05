@@ -21,12 +21,22 @@
 }
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (NSURLRequest *)urlRequest {
     NSURL *url = [NSURL URLWithString:
-            @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=5f537f3357d2729651f11773e1e57"];
+                  @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=5f537f3357d2729651f11773e1e57"];
+    
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    return request;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSURLRequest *request;
+    request = [self urlRequest];
+    
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *rsp, NSData *data, NSError *connectionError){
          
@@ -36,6 +46,7 @@
         [self.tableView reloadData];
     }];
 }
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -49,7 +60,9 @@
 }
 
 
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
 {
     return self.meetUpArray.count;
 }
@@ -60,11 +73,13 @@
     DetailViewController *vc = segue.destinationViewController;
     
     
-    NSURL *url = [NSURL URLWithString:
-                @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=5f537f3357d2729651f11773e1e57"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLRequest *request;
+    request = [self urlRequest];
+    
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
-     ^(NSURLResponse *rsp, NSData *data, NSError *connectionError){
+     ^(NSURLResponse *rsp, NSData *data, NSError *connectionError)
+    {
     
         vc.detailEventArray = [[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]
                                                                         objectForKey:@"results"];
