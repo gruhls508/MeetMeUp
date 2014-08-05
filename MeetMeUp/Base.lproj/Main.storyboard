@@ -98,7 +98,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-UB-4kl">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-UB-4kl">
                                 <rect key="frame" x="20" y="533" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go to event homepage">
@@ -152,38 +152,31 @@
                                 <rect key="frame" x="150" y="68" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="UqS-oe-VTQ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="5K8-VB-qVS">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="43p-BH-30E">
-                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taa-pP-6bl">
+                                <rect key="frame" x="11" y="68" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="&lt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="onBackButtonPressed:" destination="Wdi-jq-Qeb" eventType="touchUpInside" id="TIr-KF-MLt"/>
-                                </connections>
                             </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="egh-eO-FCp">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DtB-U8-xNx">
-                                <rect key="frame" x="271" y="7" width="33" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eO-2a-EfH">
+                                <rect key="frame" x="254" y="68" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title=">">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="onForwardButtonPressed:" destination="Wdi-jq-Qeb" eventType="touchUpInside" id="Z2D-4A-PQO"/>
-                                </connections>
                             </button>
-                        </barButtonItem>
-                    </navigationItem>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="UqS-oe-VTQ"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="backButton" destination="43p-BH-30E" id="fVr-le-qpV"/>
-                        <outlet property="forwardButton" destination="DtB-U8-xNx" id="cma-Td-6No"/>
+                        <outlet property="backButton" destination="taa-pP-6bl" id="Jl3-cn-o3A"/>
+                        <outlet property="forwardButton" destination="7eO-2a-EfH" id="VUa-Yq-alW"/>
                         <outlet property="spinner" destination="aZ8-oX-wKj" id="bG7-DT-Qxw"/>
                         <outlet property="thatWebView" destination="6bx-vt-R8K" id="FeC-MP-HWB"/>
                     </connections>

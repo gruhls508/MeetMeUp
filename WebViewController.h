@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WebViewController : UIViewController
-//@property NSArray *webEventArray;
 @property NSDictionary *webEventDictionary;
 @property (weak, nonatomic) NSString *eventPageURLString;
 
