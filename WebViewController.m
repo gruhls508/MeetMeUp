@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *thatWebView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
+
 @end
 
 @implementation WebViewController
@@ -33,37 +34,31 @@
     NSLog(@"forward button pressed");
 }
 
-- (void) loadURLstring:(NSString *)urlString
-{
+- (void) loadURLstring:(NSString *)urlString {
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.thatWebView loadRequest:urlRequest];
 }
 
 
-
-
-
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
+    
     [super viewDidLoad];
     
     
-//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.spinner.hidesWhenStopped = YES;
     [self.spinner startAnimating];
     
     
-    self.eventPageURLString = [NSString stringWithFormat:@"%@",[self.webEventDictionary objectForKey:@"event_url"]];
+    self.eventPageURLString = [NSString stringWithFormat:@"%@",
+                              [self.webEventDictionary objectForKey:@"event_url"]];
     [self loadURLstring:self.eventPageURLString];
     
     
+    
     //  Default settings for the buttons are that they
-    //  are both disabled. Because duh. I mean, why would
-    //  you want the buttons to be "colored in" and active
-    //   if there is no need for them? And yes, the client
-    //  did ask for this.
+    //  are both disabled.
     
     
     self.backButton.enabled = NO;
@@ -77,15 +72,18 @@
     
     [self.spinner stopAnimating];
     
+    
     //  These are the methods that enable the forward & backward
     //  buttons in the event that the WebView has valid destinations for the app to go forward and backward to.
 
 
-    if ([self.thatWebView canGoBack]) {
+    if ([self.thatWebView canGoBack])
+    {
         self.backButton.enabled = YES;
     }
     else (self.backButton.enabled = NO);
-    if ([self.thatWebView canGoForward]) {
+    if ([self.thatWebView canGoForward])
+    {
         self.forwardButton.enabled = YES;
     }
     else (self.forwardButton.enabled = NO);

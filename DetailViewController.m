@@ -40,15 +40,13 @@
         self.eventNameLabel.text = [self.detailEventDictionary objectForKey:@"name"];
         self.groupInfoLabel.text = [[self.detailEventDictionary valueForKey:@"group"]
                                                                     valueForKey:@"name"];
+        
         self.eventDescriptionView.text = [self.detailEventDictionary objectForKey:@"description"];
-         
-        NSLog(@"%@", [self.detailEventDictionary objectForKey:@"yes_rsvp_count"]);
+        
         
         NSString *rsvpNumber = [NSString stringWithFormat:@"%@", [self.detailEventDictionary valueForKey:@"yes_rsvp_count"]];
     
         self.rsvpLabel.text = rsvpNumber;
-   
-    
      }
      ];
 }
