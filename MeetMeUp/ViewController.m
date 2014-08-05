@@ -33,7 +33,8 @@
          
          self.meetUpArray = [[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]
                                                                         objectForKey:@"results"];
-     }];
+        [self.tableView reloadData];
+    }];
 }
 
 
