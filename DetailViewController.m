@@ -3,7 +3,7 @@
 //  MeetMeUp
 //
 //  Created by Glen Ruhl on 8/4/14.
-//  Copyright (c) 2014 MM. All rights reserved.
+//  Copyright (c) 2014 Intradine. All rights reserved.
 //
 
 #import "DetailViewController.h"
