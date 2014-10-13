@@ -43,14 +43,24 @@
     searchString = textField.text;
 }
 
+
+
+- (NSURL *)setURLSearchString {
+    return [NSURL URLWithString:
+            [NSString stringWithFormat:@"%@", [userSearch objectForKey:@"searchString"]]];
+}
+
+
+
 - (NSURLRequest *)urlRequest {
-    NSURL *url = [NSURL URLWithString:
-                  [NSString stringWithFormat:@"%@", [userSearch objectForKey:@"searchString"]]];
+    NSURL *url = [self setURLSearchString];
     
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     return request;
 }
+
+
 
 - (void)performRequest:(NSURLRequest *)request {
 
@@ -68,6 +78,7 @@
                                [self.tableView reloadData];
                            }];
 }
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
