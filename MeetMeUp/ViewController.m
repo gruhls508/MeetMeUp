@@ -17,7 +17,6 @@
 @implementation ViewController {
 
     NSIndexPath *currentPath;
-    NSString *searchString;
     NSUserDefaults *userSearch;
     NSURLRequest *privateVarRequest;
 }
@@ -40,7 +39,13 @@
 
 - (IBAction)inputDidEnd:(UITextField *)textField {
 
-    searchString = textField.text;
+    NSString *newSearchTerms = [NSString stringWithFormat:@"https://api.meetup.com/2/open_events.json?zip=60604&text=%@&time=,1w&key=5f537f3357d2729651f11773e1e57", textField.text];
+    [userSearch setObject:newSearchTerms forKey:@"searchString"];
+
+    privateVarRequest = [self urlRequest];
+
+
+    [self performRequest:privateVarRequest];
 }
 
 
