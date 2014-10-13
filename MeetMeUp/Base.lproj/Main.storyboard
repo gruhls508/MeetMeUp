@@ -57,9 +57,9 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vcr-um-pKr">
                                 <rect key="frame" x="147" y="76" width="167" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
-                                    <action selector="inputDidEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="70Q-SJ-lgm"/>
+                                    <action selector="inputDidEnd:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="bhF-ZE-gZ6"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What kind of Meetup are you looking for?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Js9-3m-dV7">
@@ -76,6 +76,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="gmU-5O-ACO" id="lxz-c6-5v4"/>
+                        <outlet property="textField" destination="vcr-um-pKr" id="suH-w8-nCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
