@@ -58,6 +58,9 @@
                                 <rect key="frame" x="147" y="76" width="167" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="inputDidEnd:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="70Q-SJ-lgm"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What kind of Meetup are you looking for?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Js9-3m-dV7">
                                 <rect key="frame" x="0.0" y="65" width="144" height="52"/>

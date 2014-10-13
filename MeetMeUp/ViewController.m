@@ -14,12 +14,39 @@
 
 @end
 
-@implementation ViewController
-{
-    
+@implementation ViewController {
+
     NSIndexPath *currentPath;
+    NSString *searchString;
+    NSUserDefaults *userSearch;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    NSURLRequest *request;
+    request = [self urlRequest];
+
+
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *rsp,
+                                               NSData *data, NSError *connectionError){
+
+
+                               self.meetUpArray = [[NSJSONSerialization
+                                                    JSONObjectWithData:data options:0
+                                                                            error:nil]
+
+                                                   objectForKey:@"results"];
+
+                               [self.tableView reloadData];
+                           }];
+}
+
+- (IBAction)inputDidEnd:(UITextField *)textField {
+
+    searchString = textField.text;
+}
 
 - (NSURLRequest *)urlRequest {
     NSURL *url = [NSURL URLWithString:
@@ -29,24 +56,6 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     return request;
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    NSURLRequest *request;
-    request = [self urlRequest];
-    
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *rsp, NSData *data, NSError *connectionError){
-         
-         self.meetUpArray = [[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]
-                                                                        objectForKey:@"results"];
-        
-        [self.tableView reloadData];
-    }];
-}
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
