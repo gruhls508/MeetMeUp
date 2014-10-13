@@ -19,28 +19,18 @@
     NSIndexPath *currentPath;
     NSString *searchString;
     NSUserDefaults *userSearch;
+    NSURLRequest *privateVarRequest;
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSURLRequest *request;
-    request = [self urlRequest];
+    privateVarRequest = [self urlRequest];
 
 
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *rsp,
-                                               NSData *data, NSError *connectionError){
-
-
-                               self.meetUpArray = [[NSJSONSerialization
-                                                    JSONObjectWithData:data options:0
-                                                                            error:nil]
-
-                                                   objectForKey:@"results"];
-
-                               [self.tableView reloadData];
-                           }];
+    [self performRequest:privateVarRequest];
 }
 
 - (IBAction)inputDidEnd:(UITextField *)textField {
@@ -55,6 +45,23 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     return request;
+}
+
+- (void)performRequest:(NSURLRequest *)request {
+
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *rsp,
+                                               NSData *data, NSError *connectionError){
+
+
+                               self.meetUpArray = [[NSJSONSerialization
+                                                    JSONObjectWithData:data options:0
+                                                    error:nil]
+
+                                                   objectForKey:@"results"];
+
+                               [self.tableView reloadData];
+                           }];
 }
 
 
