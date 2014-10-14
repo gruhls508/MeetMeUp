@@ -61,6 +61,7 @@
 		51A928DF19900362008B1D6D /* CheckMate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CheckMate.framework; sourceTree = "<group>"; };
 		51A928E119901F76008B1D6D /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ../DetailViewController.h; sourceTree = "<group>"; };
 		51A928E219901F76008B1D6D /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ../DetailViewController.m; sourceTree = "<group>"; };
+		51BA23D519EDCFA0009882BB /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +145,7 @@
 				51A928B319900284008B1D6D /* InfoPlist.strings */,
 				51A928B619900284008B1D6D /* main.m */,
 				51A928B819900284008B1D6D /* MeetMeUp-Prefix.pch */,
+				51BA23D519EDCFA0009882BB /* Defines.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "DetailViewController.h"
+#import "Defines.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -40,9 +41,10 @@
 
 
 - (IBAction)inputDidEnd:(id)sender {
+    
     NSString *newSearchTerms = [NSString stringWithFormat:@"https://api.meetup.com/2/open_events.json?zip=60604&text=%@&time=,1w&key=5f537f3357d2729651f11773e1e57", self.textField.text];
 
-    [userSearch setObject:newSearchTerms forKey:@"searchString"];
+    [userSearch setObject:newSearchTerms forKey:ksearchString];
 
     privateVarRequest = [self urlRequest];
 
