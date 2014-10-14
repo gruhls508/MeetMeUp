@@ -33,7 +33,7 @@
     NSString *searchString = [userSearch objectForKey:ksearchString];
 
     NSURL *url = [NSURL URLWithString:
-                @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=5f537f3357d2729651f11773e1e57"];
+                searchString];
     
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
