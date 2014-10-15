@@ -10,5 +10,6 @@
 #define MeetMeUp_Defines_h
 
 #define ksearchString @"searchString"
+#define kID @"id"
 
 #endif

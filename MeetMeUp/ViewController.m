@@ -94,9 +94,13 @@
 {
     NSDictionary *meetUpInfo = [self.meetUpArray objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCellID"];
+
     cell.textLabel.text  = [meetUpInfo objectForKey:@"name"];
     cell.detailTextLabel.text = [[meetUpInfo valueForKey:@"venue"]valueForKey:@"address_1"];
-    
+    NSString *eventID = [meetUpInfo objectForKey:kID];
+    NSLog(@"%@", eventID);
+//    cell.imageView.image =
+
     return cell;
 }
 
