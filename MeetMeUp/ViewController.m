@@ -97,13 +97,11 @@
 
     cell.textLabel.text  = [meetUpInfo objectForKey:@"name"];
     cell.detailTextLabel.text = [[meetUpInfo valueForKey:@"venue"]valueForKey:@"address_1"];
+
     NSString *eventID = [meetUpInfo objectForKey:kID];
-    NSLog(@"%@", eventID);
-//    cell.imageView.image =
 
     return cell;
 }
-
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -111,7 +109,6 @@
 {
     return self.meetUpArray.count;
 }
-
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
