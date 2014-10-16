@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		515B359C199047D70079004F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515B359B199047D70079004F /* WebViewController.m */; };
+		51A91ADC19F084C200D955F3 /* CommentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A91ADB19F084C200D955F3 /* CommentsVC.m */; };
 		51A928AB19900284008B1D6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A928AA19900284008B1D6D /* Foundation.framework */; };
 		51A928AD19900284008B1D6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A928AC19900284008B1D6D /* CoreGraphics.framework */; };
 		51A928AF19900284008B1D6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A928AE19900284008B1D6D /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		515B359A199047D70079004F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = ../WebViewController.h; sourceTree = "<group>"; };
 		515B359B199047D70079004F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = ../WebViewController.m; sourceTree = "<group>"; };
+		51A91ADA19F084C200D955F3 /* CommentsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsVC.h; path = ../CommentsVC.h; sourceTree = "<group>"; };
+		51A91ADB19F084C200D955F3 /* CommentsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsVC.m; path = ../CommentsVC.m; sourceTree = "<group>"; };
 		51A928A719900284008B1D6D /* MeetMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A928AA19900284008B1D6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		51A928AC19900284008B1D6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,8 +126,6 @@
 		51A928B019900284008B1D6D /* MeetMeUp */ = {
 			isa = PBXGroup;
 			children = (
-				51A928B919900284008B1D6D /* AppDelegate.h */,
-				51A928BA19900284008B1D6D /* AppDelegate.m */,
 				51A928BC19900284008B1D6D /* Main.storyboard */,
 				51A928BF19900284008B1D6D /* ViewController.h */,
 				51A928C019900284008B1D6D /* ViewController.m */,
@@ -132,6 +133,8 @@
 				51A928E219901F76008B1D6D /* DetailViewController.m */,
 				515B359A199047D70079004F /* WebViewController.h */,
 				515B359B199047D70079004F /* WebViewController.m */,
+				51A91ADA19F084C200D955F3 /* CommentsVC.h */,
+				51A91ADB19F084C200D955F3 /* CommentsVC.m */,
 				51A928C219900284008B1D6D /* Images.xcassets */,
 				51A928B119900284008B1D6D /* Supporting Files */,
 			);
@@ -141,6 +144,8 @@
 		51A928B119900284008B1D6D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				51A928B919900284008B1D6D /* AppDelegate.h */,
+				51A928BA19900284008B1D6D /* AppDelegate.m */,
 				51A928B219900284008B1D6D /* MeetMeUp-Info.plist */,
 				51A928B319900284008B1D6D /* InfoPlist.strings */,
 				51A928B619900284008B1D6D /* main.m */,
@@ -266,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51A928C119900284008B1D6D /* ViewController.m in Sources */,
+				51A91ADC19F084C200D955F3 /* CommentsVC.m in Sources */,
 				515B359C199047D70079004F /* WebViewController.m in Sources */,
 				51A928BB19900284008B1D6D /* AppDelegate.m in Sources */,
 				51A928B719900284008B1D6D /* main.m in Sources */,

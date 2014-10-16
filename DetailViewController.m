@@ -20,7 +20,10 @@
 
 @end
 
-@implementation DetailViewController
+@implementation DetailViewController {
+
+        NSString *eventID;
+}
 
 
 
@@ -49,16 +52,29 @@
         
         
         NSString *rsvpNumber = [NSString stringWithFormat:@"%@", [self.detailEventDictionary valueForKey:@"yes_rsvp_count"]];
-    
+        eventID = [self.detailEventDictionary valueForKey:kID];
+
+
         self.rsvpLabel.text = rsvpNumber;
      }
      ];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
+
+    if ([segue.identifier  isEqualToString:@"goToWeb"]) {
+
     WebViewController *wvc = segue.destinationViewController;
     wvc.webEventDictionary = self.detailEventDictionary;
+    
+    }
+
+    else if ([segue.identifier isEqualToString:@"goToComments"]) {
+
+    CommentsVC *cvc = segue.destinationViewController;
+    cvc.eventID = eventID;
+        
+    }
     
 }
 

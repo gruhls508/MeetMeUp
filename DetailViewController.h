@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommentsVC.h"
 
 @interface DetailViewController : UIViewController
 
