@@ -50,7 +50,10 @@
 
 - (NSURL *)setURLSearchString {
     return [NSURL URLWithString:
-            [NSString stringWithFormat:@"https://api.meetup.com/2/event_comments.json?event_id=%@&key=5f537f3357d2729651f11773e1e57", self.eventID]];
+
+            [NSString
+             stringWithFormat:@"https://api.meetup.com/2/event_comments.json?event_id=%@&key=5f537f3357d2729651f11773e1e57",
+             self.eventID]];
 
 }
 
@@ -70,7 +73,8 @@
                                                NSData *data, NSError *connectionError){
 
 
-                               /* Need to check here that comments JSON data ACTUALLY comes in
+
+                               /* Need to check here that Comments (JSON) data ACTUALLY comes in
                                 Dictionary form. It really should, but you never know. */
 
                                commentsDictionary = [[NSJSONSerialization
@@ -78,9 +82,9 @@
                                                     error:nil]
 
 
-                                                     // Replace this object!
+                                                   objectForKey:kresults];
 
-                                                   objectForKey:@"results"];
+                               NSLog(@"%@", [commentsDictionary valueForKey:kcomments]);
 
 
 
