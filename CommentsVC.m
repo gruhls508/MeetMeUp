@@ -8,11 +8,18 @@
 
 #import "CommentsVC.h"
 
+
 @interface CommentsVC () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation CommentsVC
+
+
+@implementation CommentsVC {
+
+    NSDictionary *commentsDictionary;
+}
 
 #pragma mark View setup
 
@@ -38,12 +45,47 @@
 }
 
 
+
 #pragma mark data methods
 
 - (NSURL *)setURLSearchString {
     return [NSURL URLWithString:
             [NSString stringWithFormat:@"https://api.meetup.com/2/event_comments.json?event_id=%@&key=5f537f3357d2729651f11773e1e57", self.eventID]];
 
+}
+
+
+- (NSURLRequest *)urlRequest {
+    NSURL *url = [self setURLSearchString];
+
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    return request;
+}
+
+- (void)performRequest:(NSURLRequest *)request {
+
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *rsp,
+                                               NSData *data, NSError *connectionError){
+
+
+                               /* Need to check here that comments JSON data ACTUALLY comes in
+                                Dictionary form. It really should, but you never know. */
+
+                               commentsDictionary = [[NSJSONSerialization
+                                                    JSONObjectWithData:data options:0
+                                                    error:nil]
+
+
+                                                     // Replace this object!
+
+                                                   objectForKey:@"results"];
+
+
+
+                               [self.tableView reloadData];
+                           }];
 }
 
 
