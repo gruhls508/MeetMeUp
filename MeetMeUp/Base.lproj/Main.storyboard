@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="O3a-p5-oJZ">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -151,10 +152,10 @@
             </objects>
             <point key="canvasLocation" x="1432" y="118"/>
         </scene>
-        <!--View Controller-->
+        <!--CommentsVC-->
         <scene sceneID="MPL-Vb-d65">
             <objects>
-                <viewController id="wBr-2b-tSl" sceneMemberID="viewController">
+                <viewController id="wBr-2b-tSl" customClass="CommentsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2nS-rW-rrj"/>
                         <viewControllerLayoutGuide type="bottom" id="dyR-2k-TdF"/>
@@ -166,9 +167,18 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-oy-1tN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="aWr-l0-VAZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aWr-l0-VAZ" id="e5K-ey-gAu">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="wBr-2b-tSl" id="7ez-j4-wP9"/>
-                                    <outlet property="delegate" destination="wBr-2b-tSl" id="bta-7i-Ocr"/>
+                                    <outlet property="dataSource" destination="wBr-2b-tSl" id="lpt-Vc-f2h"/>
+                                    <outlet property="delegate" destination="wBr-2b-tSl" id="AVO-fV-XuW"/>
                                 </connections>
                             </tableView>
                         </subviews>

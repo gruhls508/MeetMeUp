@@ -71,7 +71,7 @@
 
     else if ([segue.identifier isEqualToString:@"goToComments"]) {
 
-    CommentsVC *cvc = segue.destinationViewController;
+    CommentsVC *cvc = [CommentsVC new];
     cvc.eventID = eventID;
         
     }
