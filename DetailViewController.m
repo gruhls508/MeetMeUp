@@ -52,11 +52,9 @@
         self.eventDescriptionView.text = [self.detailEventDictionary objectForKey:kdescription];
         
         
-        NSString *rsvpNumber = [NSString stringWithFormat:@"%@", [self.detailEventDictionary valueForKey:krsvpCount]];
+       self.rsvpLabel.text = [NSString stringWithFormat:@"%@ rsvps", [self.detailEventDictionary valueForKey:krsvpCount]];
         eventID = [self.detailEventDictionary valueForKey:kID];
 
-
-        self.rsvpLabel.text = rsvpNumber;
      }
      ];
 }
