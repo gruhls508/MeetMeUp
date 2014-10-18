@@ -13,5 +13,6 @@
 #define kID @"id"
 #define kresults @"results"
 #define kcomments @"comments"
+#define keventID @"eventID"
 
 #endif

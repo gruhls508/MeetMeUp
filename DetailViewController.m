@@ -23,6 +23,7 @@
 @implementation DetailViewController {
 
         NSString *eventID;
+        NSUserDefaults *userDefaults;
 }
 
 
@@ -32,8 +33,8 @@
 {
     [super viewDidLoad];
 
-    NSUserDefaults *userSearch = [NSUserDefaults standardUserDefaults];
-    NSString *searchString = [userSearch objectForKey:ksearchString];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *searchString = [userDefaults objectForKey:ksearchString];
 
     NSURL *url = [NSURL URLWithString:
                 searchString];
@@ -71,8 +72,7 @@
 
     else if ([segue.identifier isEqualToString:@"goToComments"]) {
 
-    CommentsVC *cvc = [CommentsVC new];
-    cvc.eventID = eventID;
+
         
     }
     

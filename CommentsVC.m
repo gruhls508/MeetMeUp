@@ -19,13 +19,19 @@
 @implementation CommentsVC {
 
     NSDictionary *commentsDictionary;
+    NSURLRequest *privateVarRequest;
 }
+
+@synthesize eventID;
 
 #pragma mark View setup
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    privateVarRequest = [self urlRequest];
+
+    [self performRequest:privateVarRequest];
 }
 
 #pragma mark Table setup methods
