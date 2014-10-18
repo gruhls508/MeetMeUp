@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *searchString = [userDefaults objectForKey:ksearchString];
 
     NSURL *url = [NSURL URLWithString:
@@ -45,14 +45,14 @@
     completionHandler:^(NSURLResponse *rsp, NSData *data, NSError *connectionError){
          
         
-        self.eventNameLabel.text = [self.detailEventDictionary objectForKey:@"name"];
-        self.groupInfoLabel.text = [[self.detailEventDictionary valueForKey:@"group"]
-                                                                    valueForKey:@"name"];
+        self.eventNameLabel.text = [self.detailEventDictionary objectForKey:kname];
+        self.groupInfoLabel.text = [[self.detailEventDictionary valueForKey:kgroup]
+                                                                    valueForKey:kname];
         
-        self.eventDescriptionView.text = [self.detailEventDictionary objectForKey:@"description"];
+        self.eventDescriptionView.text = [self.detailEventDictionary objectForKey:kdescription];
         
         
-        NSString *rsvpNumber = [NSString stringWithFormat:@"%@", [self.detailEventDictionary valueForKey:@"yes_rsvp_count"]];
+        NSString *rsvpNumber = [NSString stringWithFormat:@"%@", [self.detailEventDictionary valueForKey:krsvpCount]];
         eventID = [self.detailEventDictionary valueForKey:kID];
 
 
@@ -72,7 +72,7 @@
 
     else if ([segue.identifier isEqualToString:@"goToComments"]) {
 
-
+        
         
     }
     

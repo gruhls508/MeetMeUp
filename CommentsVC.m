@@ -20,6 +20,7 @@
 
     NSDictionary *commentsDictionary;
     NSURLRequest *privateVarRequest;
+    NSUserDefaults *userDefaults;
 }
 
 @synthesize eventID;

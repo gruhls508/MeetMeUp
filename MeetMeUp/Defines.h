@@ -15,4 +15,10 @@
 #define kcomments @"comments"
 #define keventID @"eventID"
 
+
+#define krsvpCount @"yes_rsvp_count"
+#define kdescription @"description"
+#define kname @"name"
+#define kgroup @"group"
+
 #endif
