@@ -50,9 +50,7 @@
                                                                     valueForKey:kname];
         
         self.eventDescriptionView.text = [self.detailEventDictionary objectForKey:kdescription];
-        
-        
-       self.rsvpLabel.text = [NSString stringWithFormat:@"%@ rsvps", [self.detailEventDictionary valueForKey:krsvpCount]];
+        self.rsvpLabel.text = [NSString stringWithFormat:@"%@ rsvps", [self.detailEventDictionary valueForKey:krsvpCount]];
         eventID = [self.detailEventDictionary valueForKey:kID];
 
      }
@@ -63,17 +61,17 @@
 
     if ([segue.identifier  isEqualToString:@"goToWeb"]) {
 
-    WebViewController *wvc = segue.destinationViewController;
-    wvc.webEventDictionary = self.detailEventDictionary;
+        WebViewController *wvc = segue.destinationViewController;
+        wvc.webEventDictionary = self.detailEventDictionary;
     
     }
 
     else if ([segue.identifier isEqualToString:@"goToComments"]) {
 
-        
+        [userDefaults setObject:eventID forKey:keventID];
         
     }
-    
+
 }
 
 

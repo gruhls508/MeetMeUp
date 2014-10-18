@@ -11,6 +11,5 @@
 
 @interface CommentsVC : UIViewController
 
-@property NSString *eventID;
 
 @end

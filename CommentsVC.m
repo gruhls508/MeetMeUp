@@ -20,10 +20,8 @@
 
     NSDictionary *commentsDictionary;
     NSURLRequest *privateVarRequest;
-    NSUserDefaults *userDefaults;
 }
 
-@synthesize eventID;
 
 #pragma mark View setup
 
@@ -46,6 +44,9 @@
 }
 
 
+
+//  Remember to set the number of rows to equal the number of comments.
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 5;
@@ -56,11 +57,13 @@
 #pragma mark data methods
 
 - (NSURL *)setURLSearchString {
-    return [NSURL URLWithString:
 
-            [NSString
-             stringWithFormat:@"https://api.meetup.com/2/event_comments.json?event_id=%@&key=5f537f3357d2729651f11773e1e57",
-             self.eventID]];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventID = [userDefaults objectForKey:keventID];
+
+    return [NSURL URLWithString:[NSString
+               stringWithFormat:@"https://api.meetup.com/2/event_comments.json?event_id=%@&key=5f537f3357d2729651f11773e1e57",
+                                                                                                                    eventID]];
 
 }
 
