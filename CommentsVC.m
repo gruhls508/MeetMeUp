@@ -87,12 +87,12 @@
                                /* Need to check here that Comments (JSON) data ACTUALLY comes in
                                 Dictionary form. It really should, but you never know. */
 
-                               commentsDictionary = [[NSJSONSerialization
+                               commentsDictionary = [NSJSONSerialization
                                                     JSONObjectWithData:data options:0
-                                                    error:nil]
+                                                     error:nil];
 
 
-                                                   objectForKey:kresults];
+//                                                   objectForKey:kresults];
 
                                NSLog(@"%@", [commentsDictionary valueForKey:kcomments]);
 
