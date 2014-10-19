@@ -92,10 +92,20 @@
 
 
 
+- (void)cellAndIndex:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell_p:(UITableViewCell **)cell_p index_p:(NSInteger *)index_p
+{
+    *cell_p = [tableView dequeueReusableCellWithIdentifier:kcell];
+    *index_p = indexPath.row;
+}
+
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kcell];
-    NSInteger index = indexPath.row;
+    UITableViewCell *cell;
+    NSInteger index;
+    [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
 
     [self textForCell:index cell:cell];
     return cell;
@@ -103,6 +113,11 @@
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //
+//    UITableViewCell *cell;
+//    NSInteger index;
+//    [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
+//
+//    [self textForCell:index cell:cell];
 //
 //}
 
