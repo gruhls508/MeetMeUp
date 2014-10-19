@@ -45,15 +45,6 @@
 
 
 
-//  Remember to set the number of rows to equal the number of comments.
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 5;
-}
-
-
-
 #pragma mark data methods
 
 - (NSURL *)setURLSearchString {
@@ -78,29 +69,25 @@
 
 - (void)performRequest:(NSURLRequest *)request {
 
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *rsp,
                                                NSData *data, NSError *connectionError){
 
-
-
-                               /* Need to check here that Comments (JSON) data ACTUALLY comes in
-                                Dictionary form. It really should, but you never know. */
 
                                commentsDictionary = [NSJSONSerialization
                                                     JSONObjectWithData:data options:0
                                                      error:nil];
 
 
-//                                                   objectForKey:kresults];
-
-                               NSLog(@"%@", [commentsDictionary valueForKey:kcomments]);
-
-
-
-                               [self.tableView reloadData];
-                           }];
+                                                    [self.tableView reloadData];
+        }];
 }
 
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [[commentsDictionary objectForKey:kresults]count];
+}
 
 @end
