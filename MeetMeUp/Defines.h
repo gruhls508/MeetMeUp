@@ -12,7 +12,7 @@
 #define ksearchString @"searchString"
 #define kID @"id"
 #define kresults @"results"
-#define kcomments @"comments"
+#define kcomment @"comment"
 #define keventID @"eventID"
 
 

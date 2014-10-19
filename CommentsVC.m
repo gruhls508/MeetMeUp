@@ -31,16 +31,12 @@
     privateVarRequest = [self urlRequest];
 
     [self performRequest:privateVarRequest];
+
 }
 
-#pragma mark Table setup methods
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)viewDidAppear:(BOOL)animated
 {
-    UITableViewCell *cell = [UITableViewCell new];
-    return cell;
+
 }
 
 
@@ -84,10 +80,23 @@
         }];
 }
 
+#pragma mark Table setup methods
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[commentsDictionary objectForKey:kresults]count];
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [UITableViewCell new];
+    NSInteger index = indexPath.row;
+    cell.textLabel.text = [[[commentsDictionary objectForKey:kresults]objectAtIndex:index]valueForKey:kcomment];
+    return cell;
 }
 
 @end
