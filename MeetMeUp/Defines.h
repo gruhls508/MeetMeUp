@@ -20,5 +20,6 @@
 #define kdescription @"description"
 #define kname @"name"
 #define kgroup @"group"
+#define kcell @"cell"
 
 #endif

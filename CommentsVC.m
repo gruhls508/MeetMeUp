@@ -34,14 +34,8 @@
 
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
 
-}
-
-
-
-#pragma mark data methods
+#pragma mark Data Methods
 
 - (NSURL *)setURLSearchString {
 
@@ -80,7 +74,15 @@
         }];
 }
 
-#pragma mark Table setup methods
+- (void)textForCell:(NSInteger)index cell:(UITableViewCell *)cell
+{
+    cell.textLabel.text = [[[commentsDictionary objectForKey:kresults]
+                            objectAtIndex:index]
+                           valueForKey:kcomment];
+}
+
+
+#pragma mark TableView setup methods
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -90,13 +92,18 @@
 
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [UITableViewCell new];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kcell];
     NSInteger index = indexPath.row;
-    cell.textLabel.text = [[[commentsDictionary objectForKey:kresults]objectAtIndex:index]valueForKey:kcomment];
+
+    [self textForCell:index cell:cell];
     return cell;
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//
+//}
 
 @end
