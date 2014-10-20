@@ -20,6 +20,7 @@
 
     NSDictionary *commentsDictionary;
     NSURLRequest *privateVarRequest;
+    NSString *cellText;
 }
 
 
@@ -74,11 +75,12 @@
         }];
 }
 
-- (void)textForCell:(NSInteger)index cell:(UITableViewCell *)cell
+- (NSString *)textForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
     cell.textLabel.text = [[[commentsDictionary objectForKey:kresults]
                             objectAtIndex:index]
                            valueForKey:kcomment];
+    return cell.textLabel.text;
 }
 
 
@@ -91,14 +93,11 @@
 }
 
 
-
 - (void)cellAndIndex:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell_p:(UITableViewCell **)cell_p index_p:(NSInteger *)index_p
 {
     *cell_p = [tableView dequeueReusableCellWithIdentifier:kcell];
     *index_p = indexPath.row;
 }
-
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,18 +106,28 @@
     NSInteger index;
     [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
 
-    [self textForCell:index cell:cell];
+    cellText = [self textForCell:index cell:cell];
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    UITableViewCell *cell;
-//    NSInteger index;
-//    [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
-//
-//    [self textForCell:index cell:cell];
-//
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell;
+    NSInteger index;
+    [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
+
+    return 5 + [self heightForText:cellText];
+}
+
+-(CGFloat)heightForText:(NSString *)text
+{
+    NSInteger MAX_HEIGHT = 2000;
+    NSInteger WIDTH_OF_TEXTVIEW = self.view.frame.size.width;
+    UITextView * textView = [[UITextView alloc] initWithFrame: CGRectMake(0, 0, WIDTH_OF_TEXTVIEW, MAX_HEIGHT)];
+    textView.text = text;
+    [textView sizeToFit];
+    return textView.frame.size.height;
+}
+
 
 @end
