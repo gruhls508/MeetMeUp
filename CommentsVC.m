@@ -106,8 +106,10 @@
     NSInteger index;
     [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
 
-    [cell addSubview:textView];
+    
     [self textForCell:index cell:cell];
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     return cell;
 }
 
@@ -117,6 +119,7 @@
     NSInteger index;
     NSString *cellText;
     [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
+
 
     cellText = [self textForCell:index cell:cell];
     return 5 + [self heightForText:cellText];
@@ -128,6 +131,7 @@
     NSInteger WIDTH_OF_TEXTVIEW = self.view.frame.size.width;
     textView = [[UITextView alloc] initWithFrame: CGRectMake(0, 0, WIDTH_OF_TEXTVIEW, MAX_HEIGHT)];
     textView.text = text;
+    [textView.font fontWithSize:12.0];
     [textView sizeToFit];
     return textView.frame.size.height;
 }
