@@ -128,7 +128,8 @@
 
 
     cellText = [self textForCell:index cell:cell];
-    return 5 + [self heightForText:cellText];
+    CGSize size = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17] constrainedToSize:CGSizeMake(280, 999) lineBreakMode:NSLineBreakByWordWrapping];
+    return size.height + 10;
 }
 
 -(CGFloat)heightForText:(NSString *)text
