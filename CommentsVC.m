@@ -27,6 +27,7 @@
 #pragma mark View setup
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
 
     privateVarRequest = [self urlRequest];
@@ -80,6 +81,7 @@
     cell.textLabel.text = [[[commentsDictionary objectForKey:kresults]
                             objectAtIndex:index]
                            valueForKey:kcomment];
+
     return cell.textLabel.text;
 }
 
@@ -89,7 +91,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[commentsDictionary objectForKey:kresults]count];
+    NSArray *resultsArray = [commentsDictionary objectForKey:kresults];
+
+    return resultsArray.count;
+
+//    [self.tableView reloadData];
 }
 
 
