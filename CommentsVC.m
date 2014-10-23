@@ -29,11 +29,17 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    [self prefersStatusBarHidden];
 
     privateVarRequest = [self urlRequest];
 
     [self performRequest:privateVarRequest];
 
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 
@@ -71,6 +77,7 @@
                                                     JSONObjectWithData:data options:0
                                                      error:nil];
 
+                               NSLog(@"%@", [commentsDictionary objectForKey:kresults]);
 
                                                     [self.tableView reloadData];
         }];
@@ -81,6 +88,7 @@
     cell.textLabel.text = [[[commentsDictionary objectForKey:kresults]
                             objectAtIndex:index]
                            valueForKey:kcomment];
+
 
     return cell.textLabel.text;
 }
@@ -95,7 +103,6 @@
 
     return resultsArray.count;
 
-//    [self.tableView reloadData];
 }
 
 
@@ -103,6 +110,7 @@
 {
     *cell_p = [tableView dequeueReusableCellWithIdentifier:kcell];
     *index_p = indexPath.row;
+
 }
 
 
@@ -129,7 +137,7 @@
 
     cellText = [self textForCell:index cell:cell];
     CGSize size = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17] constrainedToSize:CGSizeMake(280, 999) lineBreakMode:NSLineBreakByWordWrapping];
-    return size.height + 10;
+    return size.height + 20;
 }
 
 -(CGFloat)heightForText:(NSString *)text

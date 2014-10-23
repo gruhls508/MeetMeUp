@@ -21,5 +21,6 @@
 #define kname @"name"
 #define kgroup @"group"
 #define kcell @"cell"
+#define ktime @"time"
 
 #endif
