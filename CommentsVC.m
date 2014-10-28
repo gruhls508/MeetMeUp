@@ -89,8 +89,17 @@
                             objectAtIndex:index]
                            valueForKey:kcomment];
 
-
     return cell.textLabel.text;
+}
+
+- (NSString *)detailTextForCell:(NSInteger)index cell:(UITableViewCell *)cell
+{
+
+        cell.detailTextLabel.text = [[[commentsDictionary objectForKey:kresults]
+                                objectAtIndex:index]
+                               valueForKey:kmemberName];
+
+        return cell.detailTextLabel.text;
 }
 
 
@@ -122,6 +131,7 @@
 
     
     [self textForCell:index cell:cell];
+    [self detailTextForCell:index cell:cell];
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     return cell;
@@ -137,14 +147,15 @@
 
     cellText = [self textForCell:index cell:cell];
     CGSize size = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17] constrainedToSize:CGSizeMake(280, 999) lineBreakMode:NSLineBreakByWordWrapping];
-    return size.height + 20;
+    return size.height + 60;
 }
 
 -(CGFloat)heightForText:(NSString *)text
 {
     NSInteger MAX_HEIGHT = 2000;
     NSInteger WIDTH_OF_TEXTVIEW = self.view.frame.size.width;
-    textView = [[UITextView alloc] initWithFrame: CGRectMake(0, 0, WIDTH_OF_TEXTVIEW, MAX_HEIGHT)];
+    textView = [[UITextView alloc]
+                initWithFrame: CGRectMake(0, 0, WIDTH_OF_TEXTVIEW, MAX_HEIGHT)];
     textView.text = text;
     [textView.font fontWithSize:12.0];
     [textView sizeToFit];
