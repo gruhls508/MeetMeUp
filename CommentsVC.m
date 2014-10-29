@@ -22,6 +22,7 @@
     NSURLRequest *privateVarRequest;
     UITextView *textView;
     NSArray *resultsArray;
+    NSDictionary *staticDictionary;
 }
 
 
@@ -86,10 +87,9 @@
 
 - (NSString *)textForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
-    resultsArray = [commentsDictionary objectForKey:kresults];
+    staticDictionary = [resultsArray objectAtIndex:index];
 
-    cell.textLabel.text = [[resultsArray
-                            objectAtIndex:index]
+    cell.textLabel.text = [staticDictionary
                            valueForKey:kcomment];
 
     return cell.textLabel.text;
@@ -98,9 +98,8 @@
 - (NSString *)detailTextForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
 
-        cell.detailTextLabel.text = [[resultsArray
-                                objectAtIndex:index]
-                               valueForKey:kmemberName];
+        cell.detailTextLabel.text = [staticDictionary
+                               valueForKey:ktime];
 
         return cell.detailTextLabel.text;
 }
@@ -131,10 +130,13 @@
     UITableViewCell *cell;
     NSInteger index;
     [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
+    resultsArray = [commentsDictionary objectForKey:kresults];
 
-    
+
     [self textForCell:index cell:cell];
     [self detailTextForCell:index cell:cell];
+    cell.detailTextLabel.text = [staticDictionary
+                                 valueForKey:@"time"];
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     return cell;
