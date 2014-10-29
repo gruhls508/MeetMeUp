@@ -21,6 +21,7 @@
     NSDictionary *commentsDictionary;
     NSURLRequest *privateVarRequest;
     UITextView *textView;
+    NSArray *resultsArray;
 }
 
 
@@ -85,7 +86,9 @@
 
 - (NSString *)textForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [[[commentsDictionary objectForKey:kresults]
+    resultsArray = [commentsDictionary objectForKey:kresults];
+
+    cell.textLabel.text = [[resultsArray
                             objectAtIndex:index]
                            valueForKey:kcomment];
 
@@ -95,7 +98,7 @@
 - (NSString *)detailTextForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
 
-        cell.detailTextLabel.text = [[[commentsDictionary objectForKey:kresults]
+        cell.detailTextLabel.text = [[resultsArray
                                 objectAtIndex:index]
                                valueForKey:kmemberName];
 
@@ -108,9 +111,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *resultsArray = [commentsDictionary objectForKey:kresults];
+    NSInteger commentCount = [[commentsDictionary objectForKey:kresults]count];
 
-    return resultsArray.count;
+    return commentCount;
 
 }
 
