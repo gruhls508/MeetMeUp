@@ -89,8 +89,8 @@
 {
     staticDictionary = [resultsArray objectAtIndex:index];
 
-    cell.textLabel.text = [staticDictionary
-                           valueForKey:kcomment];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [staticDictionary
+                                                                     valueForKey:kcomment], [staticDictionary valueForKey:ktime]];
 
     return cell.textLabel.text;
 }
@@ -119,6 +119,7 @@
 
 - (void)cellAndIndex:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath cell_p:(UITableViewCell **)cell_p index_p:(NSInteger *)index_p
 {
+
     *cell_p = [tableView dequeueReusableCellWithIdentifier:kcell];
     *index_p = indexPath.row;
 
