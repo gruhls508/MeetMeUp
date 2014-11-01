@@ -89,8 +89,11 @@
 {
     commentsDictionary = [resultsArray objectAtIndex:index];
 
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    NSDate *commentDate = [commentsDictionary valueForKey:ktime];
+
     cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [commentsDictionary
-                                                                     valueForKey:kcomment], [commentsDictionary valueForKey:ktime]];
+                                                                     valueForKey:kcomment], commentDate];
 
     return cell.textLabel.text;
 }
@@ -153,7 +156,7 @@
 
     cellText = [self textForCell:index cell:cell];
     CGSize size = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17] constrainedToSize:CGSizeMake(280, 999) lineBreakMode:NSLineBreakByWordWrapping];
-    return size.height + 15;
+    return size.height + 5;
 }
 
 -(CGFloat)heightForText:(NSString *)text
