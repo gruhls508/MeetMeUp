@@ -18,11 +18,11 @@
 
 @implementation CommentsVC {
 
-    NSDictionary *commentsDictionary;
+    NSDictionary *JSONDictionary;
     NSURLRequest *privateVarRequest;
     UITextView *textView;
     NSArray *resultsArray;
-    NSDictionary *staticDictionary;
+    NSDictionary *commentsDictionary;
 }
 
 
@@ -75,11 +75,11 @@
                                                NSData *data, NSError *connectionError){
 
 
-                               commentsDictionary = [NSJSONSerialization
+                               JSONDictionary = [NSJSONSerialization
                                                     JSONObjectWithData:data options:0
                                                      error:nil];
 
-                               NSLog(@"%@", [commentsDictionary objectForKey:kresults]);
+                               NSLog(@"%@", [JSONDictionary objectForKey:kresults]);
 
                                                     [self.tableView reloadData];
         }];
@@ -87,10 +87,10 @@
 
 - (NSString *)textForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
-    staticDictionary = [resultsArray objectAtIndex:index];
+    commentsDictionary = [resultsArray objectAtIndex:index];
 
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [staticDictionary
-                                                                     valueForKey:kcomment], [staticDictionary valueForKey:ktime]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [commentsDictionary
+                                                                     valueForKey:kcomment], [commentsDictionary valueForKey:ktime]];
 
     return cell.textLabel.text;
 }
@@ -98,7 +98,7 @@
 - (NSString *)detailTextForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
 
-        cell.detailTextLabel.text = [staticDictionary
+        cell.detailTextLabel.text = [commentsDictionary
                                valueForKey:ktime];
 
         return cell.detailTextLabel.text;
@@ -110,7 +110,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger commentCount = [[commentsDictionary objectForKey:kresults]count];
+    NSInteger commentCount = [[JSONDictionary objectForKey:kresults]count];
 
     return commentCount;
 
@@ -131,13 +131,13 @@
     UITableViewCell *cell;
     NSInteger index;
     [self cellAndIndex:tableView indexPath:indexPath cell_p:&cell index_p:&index];
-    resultsArray = [commentsDictionary objectForKey:kresults];
+    resultsArray = [JSONDictionary objectForKey:kresults];
 
 
     [self textForCell:index cell:cell];
-    [self detailTextForCell:index cell:cell];
-    cell.detailTextLabel.text = [staticDictionary
-                                 valueForKey:@"time"];
+
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     return cell;
@@ -153,7 +153,7 @@
 
     cellText = [self textForCell:index cell:cell];
     CGSize size = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17] constrainedToSize:CGSizeMake(280, 999) lineBreakMode:NSLineBreakByWordWrapping];
-    return size.height + 60;
+    return size.height + 15;
 }
 
 -(CGFloat)heightForText:(NSString *)text
