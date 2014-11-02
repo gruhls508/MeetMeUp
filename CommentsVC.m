@@ -90,19 +90,25 @@
 {
     commentDictionary = [resultsArray objectAtIndex:index];
 
-//    [NSDate timeIntervalSinceReferenceDate] * 1000;
+
+    /*  I've created a value for the timeInterval that I should be able to pass in as
+      the "timeIntervalSince1970." Also, I am going to need to run the conversion from
+      milliseconds after all, as well as ensuring that all values are indeed positive when
+      passed in as timeInterval objects. */
+
+    double intervalValue = [[commentDictionary valueForKey:ktime]doubleValue];
 
     NSNumber *dateInMilliseconds = [commentDictionary valueForKey:ktime];
-    int i = [dateInMilliseconds intValue];
-    int dividend = (i / 1000);
-
 
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [commentDictionary
-                                                                     valueForKey:kcomment], dateInMilliseconds];
+                                                                     valueForKey:kcomment],
+                                                                        dateInMilliseconds];
 
     return cell.textLabel.text;
 }
+
+
 
 - (NSString *)detailTextForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
