@@ -22,7 +22,7 @@
     NSURLRequest *privateVarRequest;
     UITextView *textView;
     NSArray *resultsArray;
-    NSDictionary *commentsDictionary;
+    NSDictionary *commentDictionary;
 }
 
 
@@ -81,19 +81,25 @@
 
                                NSLog(@"%@", [JSONDictionary objectForKey:kresults]);
 
+
                                                     [self.tableView reloadData];
         }];
 }
 
 - (NSString *)textForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
-    commentsDictionary = [resultsArray objectAtIndex:index];
+    commentDictionary = [resultsArray objectAtIndex:index];
 
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    NSDate *commentDate = [commentsDictionary valueForKey:ktime];
+//    [NSDate timeIntervalSinceReferenceDate] * 1000;
 
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [commentsDictionary
-                                                                     valueForKey:kcomment], commentDate];
+    NSNumber *dateInMilliseconds = [commentDictionary valueForKey:ktime];
+    int i = [dateInMilliseconds intValue];
+    int dividend = (i / 1000);
+
+
+
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [commentDictionary
+                                                                     valueForKey:kcomment], dateInMilliseconds];
 
     return cell.textLabel.text;
 }
@@ -101,7 +107,7 @@
 - (NSString *)detailTextForCell:(NSInteger)index cell:(UITableViewCell *)cell
 {
 
-        cell.detailTextLabel.text = [commentsDictionary
+        cell.detailTextLabel.text = [commentDictionary
                                valueForKey:ktime];
 
         return cell.detailTextLabel.text;
