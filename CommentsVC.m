@@ -97,14 +97,15 @@
       passed in as timeInterval objects. */
 
     double rawValue = [[commentDictionary valueForKey:ktime]doubleValue];
-    double convertedValue = (rawValue / 1000);
-
-    NSNumber *dateInMilliseconds = [commentDictionary valueForKey:ktime];
-
+    NSTimeInterval convertedValue = (rawValue / 1000);
+    NSDate *theDate = [[NSDate alloc] initWithTimeIntervalSince1970:convertedValue];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    NSLog(@"comment's date is %@", [formatter stringFromDate:theDate]);
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [commentDictionary
                                                                      valueForKey:kcomment],
-                                                                        dateInMilliseconds];
+                                                                        [formatter stringFromDate:theDate]];
 
     return cell.textLabel.text;
 }
