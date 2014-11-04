@@ -96,7 +96,8 @@
       milliseconds after all, as well as ensuring that all values are indeed positive when
       passed in as timeInterval objects. */
 
-    double intervalValue = [[commentDictionary valueForKey:ktime]doubleValue];
+    double rawValue = [[commentDictionary valueForKey:ktime]doubleValue];
+    double convertedValue = (rawValue / 1000);
 
     NSNumber *dateInMilliseconds = [commentDictionary valueForKey:ktime];
 
