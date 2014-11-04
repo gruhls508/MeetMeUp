@@ -100,7 +100,7 @@
     NSTimeInterval convertedValue = (rawValue / 1000);
     NSDate *theDate = [[NSDate alloc] initWithTimeIntervalSince1970:convertedValue];
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [formatter setDateFormat:@"EEE, MMM dd yyyy hh:mm a"];
     NSLog(@"comment's date is %@", [formatter stringFromDate:theDate]);
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@ \n\n %@", [commentDictionary
